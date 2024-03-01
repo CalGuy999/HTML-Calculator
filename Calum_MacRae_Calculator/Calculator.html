@@ -1,0 +1,258 @@
+
+<html>
+<head>
+<!--The following displays a tiny image of the calculator as the tab icon-->
+<link rel="icon" href="Images/favicon.ico" type="image/x-icon">
+<title>
+Cal's Calculator 
+</title>
+<style>
+	html{
+		background-color: #0e2345;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	h1{
+	font-family: Arial, Helvetica, sans-serif;
+	color:#91e6e3;
+	font-style: normal;
+	}
+	h3{
+	font-family: Arial, Helvetica, sans-serif;
+	color:#91e6e3;
+	font-style: normal;
+	}
+/*The following code makes it so that the button looks more button-like and also animates when hovered over and pressed*/	
+	button {
+  	background-color: #b1ccbb;
+  	border: medium;
+  	border-color: #26ace0;
+  	color: #000000;
+  	padding: 14px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-size: 12px;
+  	width:4.55%;
+  	margin: 4px 2px;
+  	border-radius: 15px;
+  	box-shadow: 0 9px #999;
+	}
+	button:hover {background-color: #4CAF50}
+	button:active {
+  	background-color: #4CAF50;
+  	box-shadow: 0 5px #666;
+  	transform: translateY(5px);
+	}
+	#bOperation {
+  	background-color: #46e8d2;
+  	border: medium;
+  	border-color: #26ace0;
+  	color: #000000;
+  	padding: 14px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-size: 12px;
+  	width:4.55%;
+  	margin: 4px 2px;
+  	border-radius: 15px;
+  	box-shadow: 0 9px #999;
+	}
+	#bOperation:hover {background-color: #4CAF50}
+	#bOperation:active {
+  	background-color: #4CAF50;
+  	box-shadow: 0 5px #666;
+  	transform: translateY(5px);
+	}
+	#bFunction {
+  	background-color: #09ad97;
+  	border: medium;
+  	border-color: #26ace0;
+  	color: #000000;
+  	padding: 14px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-size: 12px;
+  	width:4.55%;
+  	margin: 4px 2px;
+  	border-radius: 15px;
+  	box-shadow: 0 9px #999;
+	}
+	#bFunction:hover {background-color: #4CAF50}
+	#bFunction:active {
+  	background-color: #4CAF50;
+  	box-shadow: 0 5px #666;
+  	transform: translateY(5px);
+	}
+	#bClear {
+  	background-color: #7285ba;
+  	border: medium;
+  	border-color: #26ace0;
+  	color: #000000;
+  	padding: 14px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-size: 12px;
+  	width:4.55%;
+  	margin: 4px 2px;
+  	border-radius: 15px;
+  	box-shadow: 0 9px #999;
+	}
+	#bClear:hover {background-color: #4CAF50}
+	#bClear:active {
+  	background-color: #4CAF50;
+  	box-shadow: 0 5px #666;
+  	transform: translateY(5px);
+	}
+/*This code changes the way that the 'screen' looks on the calculator*/
+	input[type=text], select {
+  	width: 27%;
+  	padding: 12px 20px;
+  	margin: 8px 0;
+  	display: inline-block;
+  	border: 3px solid #3ac9c7;
+  	border-radius: 4px;
+  	box-sizing: border-box;
+  	font-size: 16px;
+	}
+</style>
+<script>
+var num1 =0;
+var num2 =0;
+var m;
+var signChoice = "";
+function addNum(num){
+ 	document.getElementById("screen").value = document.getElementById("screen").value + num;
+ }
+function setSign(sign){
+ 	signChoice = sign;
+ 	num1 = document.getElementById("screen").value;
+ 	document.getElementById("screen").value ="";
+ }
+function equalPressed() {
+ 	num2= document.getElementById("screen").value;
+ 	if (signChoice =="+") {
+ 	document.getElementById("screen").value = Number(num1)+ Number(num2);
+ }
+ else if(signChoice =="-"){
+ 	document.getElementById("screen").value = Number(num1)-Number(num2); 
+ }
+ 
+ else if(signChoice=="*"){
+ 	document.getElementById("screen").value = Number(num1) * Number(num2);
+ }
+ else if(signChoice=="/"){
+ 	document.getElementById("screen").value = Number(num1)/Number(num2);
+ }
+ else if(signChoice=="^"){
+ 	document.getElementById("screen").value = Math.pow(Number(num1),Number(num2));
+ }
+}
+/*this clears the screen*/
+function clear1(){
+ 	document.getElementById("screen").value = "";
+}
+/*this adds a decimal to the screen*/
+function addDecimal(){
+ 	document.getElementById("screen").value = document.getElementById("screen").value + "." ;
+ }
+ /*this adds a negative used for integers*/
+function addNegative(){
+ 	document.getElementById("screen").value = document.getElementById("screen").value + "-" ;
+ }
+ /*this removes one character from the screen*/
+function keyDel(){
+   	var value = document.getElementById("screen").value;
+    document.getElementById("screen").value = value.substr(0, value.length - 1);
+}
+/*this is the PI function*/
+function keyPI(){
+	document.getElementById("screen").value = document.getElementById("screen").value + Math.PI;
+}
+/*this function divides 1 by the value entered*/
+function keyX(){
+	document.getElementById("screen").value = 1/document.getElementById("screen").value;
+}
+/*this function generates a random number between 1 and 50*/
+function keyRandom(){
+	document.getElementById("screen").value = document.getElementById("screen").value + 50 * Math.random() + 1;
+}
+/*this rounds the onscreen number if it isn't whole*/
+function keyRound(){
+	document.getElementById("screen").value = Math.round(document.getElementById("screen").value);
+}
+/*this is the sin function*/
+function keySin(){
+	document.getElementById("screen").value = Math.sin(document.getElementById("screen").value);	
+}
+/*this is the cos function*/
+function keyCos(){
+	document.getElementById("screen").value = Math.cos(document.getElementById("screen").value);		
+}
+/*this is the tan function*/
+function keyTan(){
+	document.getElementById("screen").value = Math.tan(document.getElementById("screen").value);		
+}
+/*this is the square function*/
+function keySquare(){
+	document.getElementById("screen").value = document.getElementById("screen").value**2;	
+}
+function keyPercent(){
+	document.getElementById("screen").value = document.getElementById("screen").value/100;
+}
+function keySqrt(){
+	document.getElementById("screen").value= Math.sqrt(document.getElementById("screen").value)
+}
+</script>
+</head>
+<body>
+<center>
+<!--Some symbols don't appear correctly in some browsers-->
+<!--These functions were fact checked using google's scientific calculator-->
+<h1>Calculator</h1>
+<form>
+<input type="text" id="screen">
+<br>
+<button type="button" onClick="clear1()" id="bClear">AC</button>
+<button type="button" onClick="keyDel()" id="bClear">DEL</button>
+<button type="button" onClick="keyRandom()" id="bFunction">RDM</button>
+<button type="button" onClick="keyRound()" id="bFunction">RND</button>
+<button type="button" onClick="keyPercent()" id="bFunction"> % </button>
+<br>
+<button type="button" onClick="keyX()" id="bFunction">1/x</button>
+<button type="button" onClick="keyPI()" id="bFunction"> PI </button>
+<button type="button" onClick="addDecimal()" id="bFunction"> . </button>
+<button type="button" onClick="addNegative()" id="bFunction">(-)</button>
+<button type="button" onClick="keySqrt()" id="bFunction"> sqrt</button>
+<br>
+<button type="button" onClick="setSign('^')" id="bFunction"> ^ </button>
+<button type="button" onClick="keySquare()" id="bFunction"> x^2 </button>
+<button type="button" onClick="keySin()" id="bFunction"> sin </button>
+<button type="button" onClick="keyCos()" id="bFunction"> cos </button>
+<button type="button" onClick="keyTan()" id="bFunction"> tan </button>
+<br>
+<button type="button" onClick="addNum(1)" id="bNum">1</button>
+<button type="button" onClick="addNum(2)" id="bNum">2</button>
+<button type="button" onClick="addNum(3)" id="bNum">3</button>
+<button type="button" onClick="addNum(4)" id="bNum">4</button>
+<button type="button" onClick="addNum(5)" id="bNum">5</button>
+<br>
+<button type="button" onClick="addNum(6)" id="bNum">6</button>
+<button type="button" onClick="addNum(7)" id="bNum">7</button>
+<button type="button" onClick="addNum(8)" id="bNum">8</button>
+<button type="button" onClick="addNum(9)" id="bNum">9</button>
+<button type="button" onClick="addNum(0)" id="bNum">0</button>
+<br>
+<button type="button" onClick="setSign('+')" id="bOperation">+</button>
+<button type="button" onClick="setSign('-')" id="bOperation">-</button>
+<button type="button" onClick="setSign('*')" id="bOperation">x</button>
+<button type="button" onClick="setSign('/')" id="bOperation">/</button>
+<button type="button" onClick="equalPressed()"id="bOperation">=</button>
+<br>
+<!--Remember to enter a number and then enter a function like the square root or sin-->
+</center>
+</form>
+</body>
+</html> 
